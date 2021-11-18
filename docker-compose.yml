@@ -1,0 +1,17 @@
+version: "3.4"
+services:
+  angular_tests_web:
+    container_name: angular-tests-web
+    build:
+      context: ./frontend
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - "./frontend/source:/usr/share/nginx/html"
+    ports:
+      - "8080:80"
+    networks:
+      - angular-tests-network
+
+networks:
+  angular-tests-network:
+    driver: bridge
